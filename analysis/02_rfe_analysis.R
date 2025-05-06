@@ -1,3 +1,7 @@
+#load packages
+library(caret) 
+library(randomForest)  
+
 #perform Recursive Feature Elimination (RFE)
 set.seed(42)
 
@@ -26,11 +30,11 @@ plot(rfe_results)
 
 #extract the unique top 25 variables based on the highest Overall scores
 unique_top_variables <- rfe_results$variables %>%
-  filter(Variables == 38) %>%
+  filter(Variables == 20) %>%
   group_by(var) %>%
   summarize(Overall = mean(Overall, na.rm = TRUE)) %>%
   arrange(desc(Overall)) %>%
-  slice_head(n = 38)
+  slice_head(n = 20)
 
 #print the unique top 38 variables
 print(unique_top_variables$var)

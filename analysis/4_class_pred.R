@@ -71,7 +71,7 @@ varImpPlot(tmp_model)
 
 #retrain based on the tuning
 eau_predictor_test <- randomForest(
-  eau_risk_category ~ .,
+  eau_risk_category ~ ., type = "regression",
   data = sub_scores, 
   proximity = TRUE,
   ntree = 1000,  # Number of trees
